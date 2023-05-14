@@ -7,7 +7,7 @@ public class Glasses {
     private Long id;
     private String brand;
     private String color;
-    private Integer diopter;
+    private Double diopter;
     private String layer;
     private Integer orderDate;
     private FrameType frameType;
@@ -15,7 +15,7 @@ public class Glasses {
     public Glasses() {
     }
 
-    public Glasses(Long id, String brand, String color, Integer diopter, String layer, Integer orderDate, FrameType frameType) {
+    public Glasses(Long id, String brand, String color, Double diopter, String layer, Integer orderDate, FrameType frameType) {
         this.id = id;
         this.brand = brand;
         this.color = color;
@@ -49,11 +49,11 @@ public class Glasses {
         this.color = color;
     }
 
-    public Integer getDiopter() {
+    public Double getDiopter() {
         return diopter;
     }
 
-    public void setDiopter(Integer diopter) {
+    public void setDiopter(Double diopter) {
         this.diopter = diopter;
     }
 
