@@ -1,4 +1,4 @@
-package hu.nye.kovacssebestyen.progkor.szemuvegek.web;
+package hu.nye.kovacssebestyen.progkor.szemuvegek.web.controller;
 
 import hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.Glasses;
 import hu.nye.kovacssebestyen.progkor.szemuvegek.service.GlassesService;
