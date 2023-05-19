@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * A repository-ban megadott fügvények implementációja.
+ */
 @org.springframework.stereotype.Repository
 public class InMemoryGlassesRepository implements Repository<Glasses, Long> {
 

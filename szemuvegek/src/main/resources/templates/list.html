@@ -6,7 +6,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Zeneszámok listája</title>
+    <title>Szemüvegek listája</title>
 
     <link rel="stylesheet"
           th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
@@ -16,36 +16,48 @@
 
 <div class="container">
 
-    <h3 class="pt-5">Zeneszámok listája</h3>
+    <h3 class="pt-5">Szemüvegek listája</h3>
 
-    <a th:href="@{'/music-catalog/create'}"
+    <a th:href="@{'/glasses/create'}"
        type="button"
        class="btn">Új hozzáadása</a>
 
     <table class="table table-striped pt-5">
-        <caption>Zeneszámok listája</caption>
+        <caption>Szemüvegek listája</caption>
         <thread>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Cím</th>
-                <th scope="col">Előadó</th>
-                <th scope="col">Album</th>
-                <th scope="col">Műfaj</th>
+                <th scope="col">Márka</th>
+                <th scope="col">Szín</th>
+                <th scope="col">Dioptria</th>
+                <th scope="col">Réteg</th>
+                <th scope="col">Rendelési dátum</th>
+                <th scope="col">Keret típus</th>
             </tr>
         </thread>
         <tbody>
-        <tr th:each="song: ${songs}">
+        <tr th:each="glasses: ${moreGlasses}">
             <th scope="row"
-                th:text="${song.id}"></th>
-            <td th:text="${song.title}"></td>
-            <td th:text="${song.artist}"></td>
-            <td th:text="${song.album}"></td>
-            <td th:text="${song.genre}">
+                th:text="${glasses.id}"></th>
+            <td th:text="${glasses.brand}"></td>
+            <td th:text="${glasses.color}"></td>
+            <td th:text="${glasses.diopter}"></td>
+            <td th:text="${glasses.layer}"></td>
+            <td th:text="${glasses.orderDate}"><td>
             <td>
-                <a th:href="@{'/music-catalog/' + ${song.id}}"
+                <div th:switch="${glasses.frameType}}">
+                    <p th:case="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Metal}">Fém</p>
+                    <p th:case="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Plastic}">Műanyag</p>
+                    <p th:case="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Strengthened}">Erősített</p>
+                    <p th:case="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Rimless}">Keret nélküli</p>
+                    <p th:case="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Compact}">Kompakt</p>
+                </div>
+            </td>
+            <td>
+                <a th:href="@{'/glasses/edit.html'"
                    type="button"
                    class="btn btn-warning">Szerkesztés</a>
-                <a th:href="@{'/music-catalog/' + ${song.id} + '/delete'}"
+                <a th:href="@{'/glasses/' + ${song.id} + '/delete'}"
                    type="button"
                    class="btn btn-danger">Törlés</a>
             </td>

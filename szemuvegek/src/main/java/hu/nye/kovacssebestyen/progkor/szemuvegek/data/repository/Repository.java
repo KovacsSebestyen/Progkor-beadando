@@ -2,15 +2,22 @@ package hu.nye.kovacssebestyen.progkor.szemuvegek.data.repository;
 
 import java.util.List;
 
-public interface Repository<T, ID> {
+/**
+ * A repozitorihoz tervezett függvények interface-e.
+ *
+ * @param <T> Bekéri egy szemüveg adatait
+ *
+ * @param <I> Bekéri az adott szemüveg id-jét
+ */
+public interface Repository<T, I> {
 
     T save(T item);
 
-    T getById(ID id);
+    T getById(I id);
 
     List<T> getAll();
 
     T update(T item);
 
-    void deleteById(ID id);
+    void deleteById(I id);
 }

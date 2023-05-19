@@ -16,8 +16,8 @@
 	<properties>
 		<java.version>17</java.version>
 		<jacoco.version>0.8.7</jacoco.version>
-		<coverage.branchLimit>40%</coverage.branchLimit>
-		<coverage.lineLimit>40%</coverage.lineLimit>
+		<coverage.branchLimit>60%</coverage.branchLimit>
+		<coverage.lineLimit>60%</coverage.lineLimit>
 		<coverage.type>BUNDLE</coverage.type>
 	</properties>
 	<dependencies>
@@ -94,6 +94,46 @@
 						</rule>
 					</rules>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.2.1</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.puppycrawl.tools</groupId>
+						<artifactId>checkstyle</artifactId>
+						<version>10.9.3</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<consoleOutput>true</consoleOutput>
+					<configLocation>google_checks.xml</configLocation>
+					<violationSeverity>warning</violationSeverity>
+					<violationIgnore>
+						Indentation,
+						CustomImportOrder,
+						DesignForExtension,
+						HiddenField,
+						HideUtilityClassConstructor,
+						JavadocPackage,
+						JavadocVariable
+					</violationIgnore>
+					<!-- Exclude model classes and the entry point class. -->
+					<excludes>
+						**/model/**/*,
+						**/MusicCatalogApplication.java
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>check-google-checks</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

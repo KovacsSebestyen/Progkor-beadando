@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * A GlassesService interface-ben magadott függvények implementálása.
+ */
 @Service
 public class DefaultGlassesService implements GlassesService {
 

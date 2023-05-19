@@ -6,11 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
-import java.awt.*;
 import java.util.List;
 
+/**
+ * A szemüvegek listáját alakító függvények controllerrel való kezelése.
+ */
 @RequestMapping("/glasses")
 @Controller
 public class GlassesController {
@@ -22,10 +29,19 @@ public class GlassesController {
         this.glassesService = glassesService;
     }
 
+    /**
+     * A szemüvegek id-je alapján lekéri a szemüveg adatait.
+     *
+     * @param model a modelnek egy attributumába kerül majd a szemüvege
+     *
+     * @param id a szemuveg azonosítója
+     *
+     * @return a hely ahova küldje az eredményt
+     */
     @GetMapping("/{id}")
     public String getGlassesById(Model model, @PathVariable Long id) {
         Glasses glasses = glassesService.getGlassesById(id);
-        model.addAttribute("glasses",glasses);
+        model.addAttribute("glasses", glasses);
         return "edit";
     }
 
@@ -34,6 +50,15 @@ public class GlassesController {
         return "create";
     }
 
+    /**
+     * Létrehozza a szemüveget a megadott adatokkal.
+     *
+     * @param model a modelnek egy attributumába kerül majd a szemüvege
+     *
+     * @param glasses a szemüveg létrehozásához megadott adatok
+     *
+     * @return a hely ahova küldje az eredményt
+     */
     @PostMapping("/create")
     public String createGlasses(Model model, @RequestBody Glasses glasses) {
         Glasses createdGlasses = glassesService.createGlasses(glasses);
@@ -41,6 +66,13 @@ public class GlassesController {
         return "edit";
     }
 
+    /**
+     * Lekéri az összes szemüveg adatait.
+     *
+     * @param model a modelnek egy attributumába kerülnek majd a szemüvegek
+     *
+     * @return a hely ahova küldje az eredményt
+     */
     @GetMapping
     public String getAllGlasses(Model model) {
         List<Glasses> glassesList = glassesService.getAllGlasses();
@@ -54,6 +86,15 @@ public class GlassesController {
         return "edit";
     }
 
+    /**
+     * Törli a szemüveget a megadott id alapján.
+     *
+     * @param model a modelnek egy attributumába kerül majd a szemüvege
+     *
+     * @param id a szemuveg azonosítója
+     *
+     * @return a hely ahova küldje az eredményt
+     */
     @DeleteMapping("/{id}")
     public String removeGlassesById(Model model, @PathVariable Long id) {
         glassesService.deleteGlassesById(id);
