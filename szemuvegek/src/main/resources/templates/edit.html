@@ -6,7 +6,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Product Creating form</title>
+    <title>Szemüveg létrehozása</title>
 
     <link rel="stylesheet"
           th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
@@ -19,9 +19,8 @@
     <div class="row">
         <div class="col-md-4 mt-5">
             <form method="post"
-                  th:action="@{/music-catalog/update}">
+                  th:action="@{/glasses/update}">
                 <div class="form-group">
-                    <label for="name">Termék modósító adatlap</label>
                 </div>
                 <div class="form-group">
                     <label for="id">ID</label>
@@ -30,44 +29,78 @@
                            name="id"
                            readonly
                            class="form-control"
-                           th:value="${song.id}"/>
+                           th:value="${glasses.id}"/>
                 </div>
                 <div class="form-group">
-                    <label for="title">Cím</label>
+                    <label for="brand">Márka</label>
                     <input type="text"
-                           id="title"
-                           name="title"
+                           id="brand"
+                           name="brand"
                            class="form-control"
-                           th:value="${song.title}"/>
+                           th:value="${glasses.brand}"/>
                 </div>
                 <div class="form-group">
-                    <label for="artist">Előadó</label>
+                    <label for="color">Szín</label>
                     <input type="text"
-                           id="artist"
-                           name="artist"
+                           id="color"
+                           name="color"
                            class="form-control"
-                           th:value="${song.artist}"/>
+                           th:value="${glasses.color}"/>
                 </div>
                 <div class="form-group">
-                    <label for="album">Album</label>
+                    <label for="diopter">Dioptria</label>
                     <input type="text"
-                           id="album"
-                           name="album"
+                           id="diopter"
+                           name="diopter"
+                           min="-20"
+                           step="0.1"
                            class="form-control"
-                           th:value="${song.album}"/>
+                           th:value="${glasses.diopter}"/>
                 </div>
                 <div class="form-group">
-                    <label for="genre">Műfaj</label>
+                    <label for="layer">Réteg</label>
                     <input type="text"
-                           id="genre"
-                           name="genre"
+                           id="layer"
+                           name="layer"
                            class="form-control"
-                           th:value="${song.genre}"/>
+                           th:value="${glasses.layer}"/>
+                </div>
+                <div class="form-group">
+                    <label for="orderDate">Rendelési dátum</label>
+                    <input type="text"
+                           id="orderDate"
+                           name="orderDate"
+                           min="20100101"
+                           step="1"
+                           class="form-control"
+                           th:value="${glasses.orderDate}"/>
+                </div>
+                <div class="form-group">
+                    <label for="frameType">Keret típus</label>
+                    <select id="frameType"
+                            name="frameType"
+                            class="form-control form-select">
+                        <option th:value="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Metal}"
+                                th:text="Fém"
+                                th:selected="${glasses.frameType} == ${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Metal} ? true : false"></option>
+                        <option th:value="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Plastic}"
+                                th:text="Műanyag"
+                                th:selected="${glasses.frameType} == ${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Plastic} ? true : false"></option>
+                        <option th:value="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Strengthened}"
+                                th:text="Erősített"
+                                th:selected="${glasses.frameType} == ${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Strengthened} ? true : false"></option>
+                        <option th:value="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Rimless}"
+                                th:text="Keret nélküli"
+                                th:selected="${glasses.frameType} == ${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Rimless} ? true : false"></option>
+                        <option th:value="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Compact}"
+                                th:text="Kompakt"
+                                th:selected="${glasses.frameType} == ${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Compact} ? true : false"></option>
+                    </select>
                 </div>
                 <button class="btn btn-primary"
                         type="submit">Módosít
                 </button>
-                <a th:href="@{/music-catalog}"
+                <a th:href="@{/glasses}"
                    class="btn btn-secondary"
                    type="submit">Vissza a listához</a>
             </form>

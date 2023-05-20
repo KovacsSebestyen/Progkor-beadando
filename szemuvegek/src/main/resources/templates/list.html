@@ -54,10 +54,10 @@
                 </div>
             </td>
             <td>
-                <a th:href="@{'/glasses/edit.html'"
+                <a th:href="@{'/glasses/' + ${glasses.id}}"
                    type="button"
                    class="btn btn-warning">Szerkesztés</a>
-                <a th:href="@{'/glasses/' + ${song.id} + '/delete'}"
+                <a th:href="@{'/glasses/' + ${glasses.id} + '/delete'}"
                    type="button"
                    class="btn btn-danger">Törlés</a>
             </td>

@@ -42,12 +42,12 @@ public class GlassesController {
     public String getGlassesById(Model model, @PathVariable Long id) {
         Glasses glasses = glassesService.getGlassesById(id);
         model.addAttribute("glasses", glasses);
-        return "edit";
+        return "glasses/edit";
     }
 
     @GetMapping("/create")
     public String createGlasses(Model model) {
-        return "create";
+        return "glasses/create";
     }
 
     /**
@@ -63,7 +63,7 @@ public class GlassesController {
     public String createGlasses(Model model, @RequestBody Glasses glasses) {
         Glasses createdGlasses = glassesService.createGlasses(glasses);
         model.addAttribute("glasses", createdGlasses);
-        return "edit";
+        return "glasses/edit";
     }
 
     /**
@@ -77,13 +77,13 @@ public class GlassesController {
     public String getAllGlasses(Model model) {
         List<Glasses> glassesList = glassesService.getAllGlasses();
         model.addAttribute("moreGlasses", glassesList);
-        return "list";
+        return "glasses/list";
     }
 
     @PostMapping(value = "/update", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String updateGlasses(Model model, @RequestBody Glasses glasses) {
         Glasses updatedGlasses = glassesService.updateGlasses(glasses);
-        return "edit";
+        return "glasses/edit";
     }
 
     /**
@@ -95,11 +95,11 @@ public class GlassesController {
      *
      * @return a hely ahova küldje az eredményt
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}/delete")
     public String removeGlassesById(Model model, @PathVariable Long id) {
         glassesService.deleteGlassesById(id);
         List<Glasses> glassesList = glassesService.getAllGlasses();
         model.addAttribute("moreGlasses", glassesList);
-        return "list";
+        return "glasses/list";
     }
 }
