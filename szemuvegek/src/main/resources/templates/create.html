@@ -59,24 +59,23 @@
                     <input type="number"
                            id="orderdate"
                            th:name="orderdate"
-                           min="20100101"
                            step="1"
                            class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label for="frametype">Keret típus</label>
                     <select id="frametype"
-                            name="frametype"
+                            th:name="frameType"
                             class="form-control form-select">
-                        <option th:value="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Metal}"
+                        <option th:value="Metal"
                                 th:text="Fém"></option>
-                        <option th:value="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Plastic}"
+                        <option th:value="Plastic"
                                 th:text="Műanyag"></option>
-                        <option th:value="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Strengthened}"
+                        <option th:value="Strengthened"
                                 th:text="Megerősített"></option>
-                        <option th:value="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Rimless}"
-                                th:text="Keret nélküli"></option>
-                        <option th:value="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Compact}"
+                        <option th:value="Rimless"
+                                th:text="Keretnélküli"></option>
+                        <option th:value="Compact"
                                 th:text="Kompakt"></option>
                     </select>
                 </div>

@@ -45,7 +45,7 @@
             <td th:text="${glasses.layer}"></td>
             <td th:text="${glasses.orderDate}"><td>
             <td>
-                <div th:switch="${glasses.frameType}}">
+                <div th:switch="${glasses.frameType}">
                     <p th:case="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Metal}">Fém</p>
                     <p th:case="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Plastic}">Műanyag</p>
                     <p th:case="${T(hu.nye.kovacssebestyen.progkor.szemuvegek.data.model.FrameType).Strengthened}">Erősített</p>

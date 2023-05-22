@@ -9,9 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -42,12 +40,12 @@ public class GlassesController {
     public String getGlassesById(Model model, @PathVariable Long id) {
         Glasses glasses = glassesService.getGlassesById(id);
         model.addAttribute("glasses", glasses);
-        return "glasses/edit";
+        return "edit";
     }
 
     @GetMapping("/create")
     public String createGlasses(Model model) {
-        return "glasses/create";
+        return "create";
     }
 
     /**
@@ -60,10 +58,10 @@ public class GlassesController {
      * @return a hely ahova küldje az eredményt
      */
     @PostMapping("/create")
-    public String createGlasses(Model model, @RequestBody Glasses glasses) {
+    public String createGlasses(Model model, Glasses glasses) {
         Glasses createdGlasses = glassesService.createGlasses(glasses);
         model.addAttribute("glasses", createdGlasses);
-        return "glasses/edit";
+        return "edit";
     }
 
     /**
@@ -77,13 +75,13 @@ public class GlassesController {
     public String getAllGlasses(Model model) {
         List<Glasses> glassesList = glassesService.getAllGlasses();
         model.addAttribute("moreGlasses", glassesList);
-        return "glasses/list";
+        return "list";
     }
 
     @PostMapping(value = "/update", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String updateGlasses(Model model, @RequestBody Glasses glasses) {
+    public String updateGlasses(Model model, Glasses glasses) {
         Glasses updatedGlasses = glassesService.updateGlasses(glasses);
-        return "glasses/edit";
+        return "edit";
     }
 
     /**
@@ -95,11 +93,11 @@ public class GlassesController {
      *
      * @return a hely ahova küldje az eredményt
      */
-    @DeleteMapping("/{id}/delete")
+    @GetMapping("/{id}/delete")
     public String removeGlassesById(Model model, @PathVariable Long id) {
         glassesService.deleteGlassesById(id);
         List<Glasses> glassesList = glassesService.getAllGlasses();
         model.addAttribute("moreGlasses", glassesList);
-        return "glasses/list";
+        return "list";
     }
 }
